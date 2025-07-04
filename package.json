@@ -1,0 +1,20 @@
+{
+  "name": "automate-audit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@slack/web-api": "^7.9.3",
+    "dotenv": "^17.0.1",
+    "nodemon": "^3.1.10",
+    "puppeteer": "^24.11.2"
+  }
+}

@@ -1,0 +1,23 @@
+name: Daily Growfin Website Automation Testing Check
+
+on:
+  schedule:
+    - cron: "30 1 * * *" # 7:00 AM IST daily
+  workflow_dispatch:
+
+jobs:
+  run-check:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Puppeteer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          npm ci
+      - name: Run Growfin Puppeteer Check
+        run: npm run check
