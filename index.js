@@ -109,10 +109,7 @@ async function sendSlack(text, filePath = null) {
     `Time: ${nowIST()}\n` +
     `Details: ${detail}`;
 
-  await sendSlack(
-    summary,
-    !checkOK && !UPLOAD_SCREENSHOT_ON_SUCCESS ? null : shotPath
-  );
+  await sendSlack(summary, checkOK ? null : shotPath);
   await browser.close();
   process.exit(checkOK ? 0 : 1);
 })();
